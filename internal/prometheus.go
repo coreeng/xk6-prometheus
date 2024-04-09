@@ -265,11 +265,17 @@ func (a *PrometheusAdapter) getSummary(name string, helpSuffix string, tags *met
 		labelNames := a.tagsToLabelNames(tags)
 		summary = &summaryWithLabels{
 			summaryVec: prometheus.NewSummaryVec(prometheus.SummaryOpts{ // nolint:exhaustruct
-				Namespace:  a.Namespace,
-				Subsystem:  a.Subsystem,
-				Name:       name,
-				Help:       helpFor(name, helpSuffix),
-				Objectives: map[float64]float64{0.5: 0.05, 0.9: 0.01, 0.95: 0.001, 1: 0}, // nolint:gomnd
+				Namespace: a.Namespace,
+				Subsystem: a.Subsystem,
+				Name:      name,
+				Help:      helpFor(name, helpSuffix),
+				Objectives: map[float64]float64{
+					0.5:  0.05,
+					0.9:  0.01,
+					0.95: 0.005,
+					0.99: 0.001,
+					1:    0,
+				}, // nolint:gomnd
 			}, labelNames),
 			labelNames: labelNames,
 		}

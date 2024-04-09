@@ -19,6 +19,7 @@ import (
 )
 
 const defaultPort = 5656
+const defaultNamespace = "k6"
 
 // Register the extensions on module initialization.
 func init() {
@@ -63,7 +64,7 @@ func getopts(query string) (*options, error) {
 	opts := &options{
 		Port:      defaultPort,
 		Host:      "",
-		Namespace: "",
+		Namespace: defaultNamespace,
 		Subsystem: "",
 	}
 
