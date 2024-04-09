@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: MIT
 
-module github.com/szkiba/xk6-prometheus/magefiles
+module github.com/coreeng/xk6-prometheus/magefiles
 
 go 1.18
 
